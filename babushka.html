@@ -106,13 +106,16 @@
         console.log(retter);
         main.innerHTML = "";
         retter.forEach((ret) => {
-          if (filter == ret.troende || filter == "alle") {
-            const klon = temp.cloneNode(true).content;
+          if (filter == ret.kategori || filter == "alle") {
+            let klon = temp.cloneNode(true).content;
             klon.querySelector(".billede").src =
               "medium/" + ret.billednavn + "-md.jpg";
             klon.querySelector(".navn").textContent = ret.navn;
-            klon.querySelector(".beskrivelse").textContent = ret.beskrivelse;
-            klon.querySelector(".pris").textContent = ret.pris;
+
+            klon.querySelector(".beskrivelse").textContent =
+              ret.kortbeskrivelse;
+            klon.querySelector(".pris").textContent =
+              "Pris:" + ret.pris + "kr.";
 
             main.appendChild(klon);
           }
