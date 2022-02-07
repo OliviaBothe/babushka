@@ -49,10 +49,11 @@
     </template>
     <h1>Alle</h1>
     <nav>
-      <button data-troende="alle" class="valgt">Alle</button>
-      <button data-troende="ja">Troende</button>
-      <button data-troende="nej">Ikke troende</button>
-      <button data-troende="tvivler">Tvivler</button>
+      <button data-kategori="alle" class="valgt">Alle</button>
+      <button data-kategori="forretter">Forretter</button>
+      <button data-kategori="hovedretter">Hovedretter</button>
+      <button data-kategori="desserter">Desserter</button>
+      <button data-kategori="drikkevarer">Drikkevarer</button>
     </nav>
     <main></main>
     <script>
@@ -61,7 +62,7 @@
       let retter;
       let filter = "alle";
       const filterKnapper = document.querySelectorAll("button");
-      const header = document.querySelector("header h1");
+      const header = document.querySelector("h1");
 
       document.addEventListener("DOMContentLoaded", start);
 
@@ -73,18 +74,12 @@
       }
 
       function setFilter() {
-        filter = this.dataset.troende;
+        filter = this.dataset.kategori;
         document.querySelector(".valgt").classList.remove(".valgt");
         this.classList.add(".valgt");
         header.textContent = this.textContent;
         vis();
       }
-
-      const options = {
-        headers: {
-          "x-apikey": key,
-        },
-      };
 
       async function hentData() {
         const respons = await fetch(url, {
