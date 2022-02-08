@@ -13,9 +13,15 @@
         margin-top: 20px;
       }
       article {
-        border: 1px black;
-        padding: 5px;
+        border: 0.5px black;
+        padding: 3px;
         border-style: solid;
+        padding-top: 5px;
+      }
+
+      body {
+        padding-left: 3rem;
+        padding-right: 3rem;
       }
 
       h1 {
@@ -27,14 +33,23 @@
         display: flex;
         justify-content: center;
         gap: 10px;
+        margin-bottom: 4rem;
       }
 
       .valgt {
-        background-color: lightcoral;
+        background-color: rgb(155, 155, 219);
       }
 
       img {
         max-width: 100%;
+      }
+
+      button {
+        border-radius: 4px;
+        background-color: whitesmoke;
+      }
+
+      header {
       }
 
       #modal {
@@ -60,6 +75,7 @@
   </head>
 
   <body>
+    <header>Bistro Babushka</header>
     <aside id="modal">
       <article>
         <img src="" alt="" />
@@ -71,6 +87,7 @@
 
     <template>
       <article>
+        <h1 class="overskrift"></h1>
         <h2 class="navn"></h2>
         <img src="" alt="mad" class="billede" />
         <p class="beskrivelse"></p>
