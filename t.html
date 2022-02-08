@@ -13,9 +13,9 @@
         margin-top: 20px;
       }
       article {
-        border: 4px black;
+        border: 1px black;
         padding: 5px;
-        border-style: ridge;
+        border-style: solid;
       }
 
       h1 {
@@ -41,8 +41,10 @@
         display: none;
         width: 100vw;
         height: 100vw;
-        display: fixed;
-        background-color: gainsboro;
+        position: fixed;
+        background-color: grey;
+        overflow: scroll;
+        top: 0;
       }
 
       #modal article {
@@ -58,14 +60,6 @@
   </head>
 
   <body>
-    <nav>
-      <button data-kategori="alle" class="valgt">Alle</button>
-      <button data-kategori="forretter">Forretter</button>
-      <button data-kategori="hovedretter">Hovedretter</button>
-      <button data-kategori="desserter">Desserter</button>
-      <button data-kategori="drikkevarer">Drikkevarer</button>
-    </nav>
-
     <aside id="modal">
       <article>
         <img src="" alt="" />
@@ -74,8 +68,6 @@
         <p></p>
       </article>
     </aside>
-
-    <section></section>
 
     <template>
       <article>
@@ -86,6 +78,13 @@
       </article>
     </template>
     <h1>Alle</h1>
+    <nav>
+      <button data-kategori="alle" class="valgt">Alle</button>
+      <button data-kategori="forretter">Forretter</button>
+      <button data-kategori="hovedretter">Hovedretter</button>
+      <button data-kategori="desserter">Desserter</button>
+      <button data-kategori="drikkevarer">Drikkevarer</button>
+    </nav>
 
     <main></main>
     <script>
@@ -94,7 +93,7 @@
       const modal = document.querySelector("#modal");
       const url = " https://babushka-dd8a.restdb.io/rest/menu";
       const key = "600ec2fb1346a1524ff12de4";
-      let retter;
+      let retter = [];
       let filter = "alle";
       const filterKnapper = document.querySelectorAll("button");
       const header = document.querySelector("h1");
@@ -138,10 +137,15 @@
             klon.querySelector(".billede").src =
               "medium/" + ret.billednavn + "-md.jpg";
 
-            //klon.querySelector(".billede").alt = "menubilleder";
-            klon
+            /*Når man klikker på et billede, popper billedet op i stor størrelse*/
+            /*klon
               .querySelector("article")
-              .addEventListener("click", () => visDetaljer(ret));
+              .addEventListener("click", () => visDetaljer(ret));*/
+
+            /*Når man klikker på et billede, kommer man hen til Kea's hjemmeside*/
+            klon.querySelector("article").addEventListener("click", () => {
+              location.href = "menuliste-singleview.html";
+            });
 
             klon.querySelector(".navn").textContent = ret.navn;
             klon.querySelector(".beskrivelse").textContent =
