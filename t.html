@@ -144,14 +144,14 @@
 
             /*Når man klikker på et billede, kommer man hen til Kea's hjemmeside*/
             klon.querySelector("article").addEventListener("click", () => {
-              location.href = "menuliste-singleview.html";
+              location.href = "menuliste-singleview.html?id=" + ret._id;
             });
 
             klon.querySelector(".navn").textContent = ret.navn;
             klon.querySelector(".beskrivelse").textContent =
               ret.kortbeskrivelse;
             klon.querySelector(".pris").textContent =
-              "Pris:" + ret.pris + "kr.";
+              "Pris: " + ret.pris + "kr.";
 
             main.appendChild(klon);
           }

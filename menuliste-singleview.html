@@ -5,15 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>singleview</title>
+
+    <style>
+      img {
+        max-width: 100%;
+        padding-left: 300px;
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        text-align: center;
+        font-size: 2.8rem;
+      }
+
+      .pris {
+        text-align: center;
+      }
+
+      .beskrivelse {
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
+    <button>Tilbage</button>
     <main>
-      <button>Tilbage</button>
       <article>
         <h2 class="navn"></h2>
-        <img src="" alt="mad" class="billede" />
-        <p class="beskrivelse"></p>
         <p class="pris"></p>
+        <p class="beskrivelse"></p>
+        <img src="" alt="mad" class="billede" />
       </article>
     </main>
     <script>
@@ -34,16 +55,19 @@
             "x-apikey": key,
           },
         });
-        retter = await respons.json();
-        console.log({ retter });
-        //vis();
+        ret = await respons.json();
+        console.log(ret);
+        vis();
       }
 
       function vis() {
         document.querySelector(".navn").textContent = ret.navn;
-        document.querySelector(".beskrivelse").textContent = ret.beskrivelse;
-        document.querySelector(".pris").textContent = ret.pris;
-        document.querySelector(".billede").src = "medium/" + ret.billede;
+        document.querySelector(".beskrivelse").textContent =
+          ret.kortbeskrivelse;
+        document.querySelector(".pris").textContent =
+          "Pris: " + ret.pris + "kr.";
+        document.querySelector(".billede").src =
+          "medium/" + ret.billednavn + "-md.jpg";
       }
 
       //går tilbage til den side man var på sidst
