@@ -8,22 +8,52 @@
 
     <style>
       img {
-        max-width: 100%;
-        padding-left: 300px;
-        margin-bottom: 20px;
+        width: 100%;
+        margin-top: 20px;
       }
 
       h2 {
         text-align: center;
-        font-size: 2.8rem;
+        font-size: 2rem;
+        font-family: "Futura bold", sans-serif;
+        color: rgb(63, 63, 63);
+        margin-top: 30px;
       }
 
       .pris {
         text-align: center;
       }
 
-      .beskrivelse {
+      p {
         text-align: center;
+      }
+      @media (min-width: 800px) {
+        img {
+          max-width: 50%;
+          padding-left: 360px;
+        }
+        h2 {
+          text-align: center;
+          font-size: 2rem;
+          font-family: "Futura bold", sans-serif;
+          color: rgb(63, 63, 63);
+        }
+
+        p {
+          margin: 0.5rem;
+          margin-top: 45px;
+          padding: 1rem;
+          right: 50px;
+          grid-column: 2/2;
+        }
+
+        .pris {
+          text-align: center;
+        }
+
+        .beskrivelse {
+          text-align: center;
+        }
       }
     </style>
   </head>
@@ -63,7 +93,7 @@
       function vis() {
         document.querySelector(".navn").textContent = ret.navn;
         document.querySelector(".beskrivelse").textContent =
-          ret.kortbeskrivelse;
+          ret.langbeskrivelse;
         document.querySelector(".pris").textContent =
           "Pris: " + ret.pris + "kr.";
         document.querySelector(".billede").src =
